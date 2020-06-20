@@ -39,15 +39,24 @@ module.exports={
           'css-loader',
           'postcss-loader',
           'sass-loader'
-        ],
-        exclude: /node_modules/,
+        ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|bmp)$/i,
         use: [{
           loader: 'url-loader',
           options:{
             limit: 1024*30,//30KB以下的文件采用url-loader
+            fallback: 'file-loader'
+          }
+        }]
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
+        use: [{
+          loader: 'url-loader',
+          options:{
+            limit: 1024*30,
             fallback: 'file-loader'
           }
         }]
@@ -64,7 +73,7 @@ module.exports={
   },
   resolve:{
     alias: {
-      '@': path.resolve(__dirname,'src'),
+      '@': path.resolve(__dirname,'./src'),
     },
     mainFields: ["browser", "module", "main"],//第三方模块导入顺序
     enforceExtension: false ,
