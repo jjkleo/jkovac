@@ -1,7 +1,7 @@
 {
-  "name": "demo",
+  "name": "jkovac",
   "version": "1.0.0",
-  "description": "webpack learn",
+  "description": "JKovac--一个多功能网站 ",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js"
