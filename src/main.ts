@@ -2,7 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import './plugin/element.js'
+import '@/plugin/element.js';
+import '@/plugin/fontawesome.js';
 
 
 
@@ -13,3 +14,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+

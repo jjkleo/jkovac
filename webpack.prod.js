@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require("webpack-merge");
@@ -10,16 +10,16 @@ const common = require("./webpack.common.js");
 module.exports = merge(common,{
   mode:'production',
   output:{
-    filename:'[name].[hash].js',
-    chunkFilename:'[name].[hash].js',//非入口chunk的文件名称
+    filename:'js/[name].[hash].js',
+    chunkFilename:'js/[name].[hash].js',//非入口chunk的文件名称
     publicPath:'./' //打算放到web服务器下的目录
   },
   // devtool: 'source-map',
   plugins:[
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[name].[hash].css',
     }),
     new HtmlWebpackPlugin({
       template:'./template.html',
@@ -30,14 +30,18 @@ module.exports = merge(common,{
     }),
   ],
   optimization: {
+    minimize: true,
     minimizer: [
-      new TerserPlugin(),
+      new TerserWebpackPlugin({
+        parallel: true,
+        extractComments: false,//不生成js.LICENSE.txt文件
+      }),
       new OptimizeCssAssetsPlugin({}),
     ],
   },
   performance: {
     hints: "warning",//性能提示
-    maxAssetSize: 250000,//最大文件大小
-    maxEntrypointSize: 250000//最大入口文件大小
+    maxAssetSize: 400000,//最大文件大小
+    maxEntrypointSize: 400000//最大入口文件大小
   }
 });

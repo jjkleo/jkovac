@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div class="download">
     <el-container>
       <top-header />
       <el-main>
         <div class="container">
-          主页内容
+          Download
         </div>
       </el-main>
       <el-footer>Footer</el-footer>
@@ -15,7 +15,7 @@
 <script>
 import TopHeader from "@/components/TopHeader";
 export default {
-  name: "Home",
+  name: "Explore",
   components: {
     TopHeader,
   },
@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .container {
-  background: coral;
+  background: blue;
   text-align: center;
   width: 1000px;
   min-height: 600px;

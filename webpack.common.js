@@ -30,7 +30,8 @@ module.exports={
       },
       {
         test:/\.js$/,
-        use:['babel-loader']
+        use:['babel-loader'],
+        exclude: /node_modules/,
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -39,13 +40,15 @@ module.exports={
           'css-loader',
           'postcss-loader',
           'sass-loader'
-        ]
+        ],
+        //不能使用exclude: /node_modules/ ElementUI中有样式要解析
       },
       {
         test: /\.(png|jpe?g|gif|bmp)$/i,
         use: [{
           loader: 'url-loader',
           options:{
+            name: 'img/[hash].[ext]',
             limit: 1024*30,//30KB以下的文件采用url-loader
             fallback: 'file-loader'
           }
@@ -56,6 +59,7 @@ module.exports={
         use: [{
           loader: 'url-loader',
           options:{
+            name: 'font/[hash].[ext]',
             limit: 1024*30,
             fallback: 'file-loader'
           }
@@ -67,7 +71,7 @@ module.exports={
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'raw-loader'
       }
     ]
   },
