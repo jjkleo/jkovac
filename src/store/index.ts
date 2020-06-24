@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    activeIndex: 1,
+   
     count:0 ,//return this.$store.state.count;
     list: [1 , 5 , 8 , 10 , 30 , 50],
   },
@@ -19,9 +19,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    changeActiveIndex:(state,index)=>{
-      state.activeIndex=index;
-    },
+    
     //this.$store.commit('increment',5);
     increment(state, n=1){
       state.count+=n;

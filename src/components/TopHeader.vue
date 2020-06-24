@@ -9,11 +9,11 @@
         </el-col>
         <!--导航栏-->
         <el-col :span="8">
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="1">首页</el-menu-item>
-            <el-menu-item index="2">发现</el-menu-item>
-            <el-menu-item index="3">我的</el-menu-item>
-            <el-menu-item index="4">下载客户端</el-menu-item>
+          <el-menu router :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+            <el-menu-item index="/">首页</el-menu-item>
+            <el-menu-item index="/explore">发现</el-menu-item>
+            <el-menu-item index="/mine">我的</el-menu-item>
+            <el-menu-item index="/download">下载客户端</el-menu-item>
           </el-menu>
         </el-col>
         <!--搜索框-->
@@ -55,7 +55,7 @@ export default {
   name:"TopHeader",
   data() {
     return {
-      activeIndex: this.$store.state.activeIndex+'',
+      activeIndex: this.$route.path, 
       search:'',
       logo,
       avatar,
@@ -64,21 +64,9 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.$store.commit('changeActiveIndex',key);
-      if(key==1){
-        this.$router.push('/');
-      }else if(key==2){
-        this.$router.push('/explore');       
-      }else if(key==3){
-        this.$router.push('/mine');
-      }else if(key==4){
-        this.$router.push('/download');
-      }
-    },
     doSearch(){
       console.log('doSearch()');
-    }
+    },
   }
 
 }

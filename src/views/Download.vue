@@ -15,7 +15,7 @@
 <script>
 import TopHeader from "@/components/TopHeader";
 export default {
-  name: "Explore",
+  name: "Download",
   components: {
     TopHeader,
   },

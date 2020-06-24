@@ -5,9 +5,7 @@
       <el-container class="container">
         <!--主体部分-->
         <div class="container-main">
-          <div class="main-top">
-            <span class="main-top-label">人物</span>
-          </div>
+          <router-view/>
         </div>
 
         <!--侧边栏-->
@@ -17,13 +15,13 @@
           <div class="aside-top">
             <el-row justify="center">
               <el-col :span="6" class="aside-top-col">
-                <el-button plain circle type="primary" class="aside-top-btn">
+                <el-button plain circle type="primary" class="aside-top-btn" @click="()=>{ this.$router.push({name:'Personage'}) }">
                   <font-awesome-icon icon="users" />
                 </el-button>
                 <div class="aside-top-label">人物</div>
               </el-col>
               <el-col :span="6" class="aside-top-col">
-                <el-button plain circle type="primary" class="aside-top-btn">
+                <el-button plain circle type="primary" class="aside-top-btn" @click="()=>{ this.$router.push('/mine/ok') }">
                   <font-awesome-icon icon="film" />
                 </el-button>
                 <div class="aside-top-label">电影</div>
@@ -85,20 +83,17 @@
 <script>
 import TopHeader from "@/components/TopHeader";
 export default {
-  name: "Explore",
+  // name: "Mine",
   components: {
     TopHeader,
   },
   data() {
     return {
-      activeNames: ['1'],
 
     };
   },
   methods:{
-    handleChange(val) {
-      console.log(val);
-    }
+
   }
 };
 </script>
@@ -157,16 +152,6 @@ export default {
   border: 1px solid #dcdfe6;
   background: #ffffff;
   text-align: left;
-}
-.main-top{
-  height: 40px;
-  border-bottom: 2px solid rgb(0, 132, 255);;
-}
-
-.main-top-label{
-  font-size: 24px;
-  font-weight: normal;
-  font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
 }
 </style>
 

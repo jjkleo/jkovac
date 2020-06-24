@@ -1,6 +1,12 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
+// import Mine from "@/views/Mine.vue";
+// import Explore from "@/views/Explore.vue";
+// import Download from "@/views/Download.vue";
+
+// import MineHome from "@/views/MineHome.vue";
+// import Personage from "@/views/Personage.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +17,7 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const routes: Array<RouteConfig> = [
+  
   {
     path: "/",
     name: "Home",
@@ -18,19 +25,38 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/explore",
-    name: "About",
+    name: "Explore",
     component: () => import( /* webpackChunkName: "explore" */ "../views/Explore.vue")
   },
   {
     path: "/mine",
-    name: "Mine",
-    component: () => import( /* webpackChunkName: "mine" */ "../views/Mine.vue")
+    component: () => import( /* webpackChunkName: "mine" */ "../views/Mine.vue"),
+    children:[  
+      {
+        path:"",
+        name:'MineHome',
+        component: () => import( /* webpackChunkName: "minehome" */ "../views/MineHome.vue"),
+      },
+      {
+        path:'personage',
+        name:"Personage",
+        component: () => import( /* webpackChunkName: "personage" */ "../views/Personage.vue"),
+      },
+      {
+        path:"*",
+        redirect: "/mine"
+      }
+    ]
   },
   {
     path: "/download",
     name: "Download",
     component: () => import( /* webpackChunkName: "download" */ "../views/Download.vue")
-  }
+  },
+  {
+    path:'*',
+    redirect: '/',
+  },
 ];
 
 const router = new VueRouter({
