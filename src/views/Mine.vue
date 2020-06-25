@@ -68,7 +68,7 @@
           </div>
 
           <!--分类-->
-          <div class="aside-category">
+          <div class="aside-bottom">
             待开发
           </div>
 
@@ -146,8 +146,9 @@ export default {
   color: #444;
   white-space: nowrap;
 }
-.aside-category{
+.aside-bottom{
   width: 300px;
+  height: 700px;
   min-height: 400px;
   border: 1px solid #dcdfe6;
   background: #ffffff;

@@ -2,7 +2,7 @@ import Vue from "vue";
 import { 
   Button,Container,Header,Main,Aside,Footer,Col,Row,
   Menu,MenuItem,MenuItemGroup,Submenu,Input,Avatar,
-  Collapse,CollapseItem,Link} from "element-ui";
+  Collapse,CollapseItem,Link,Pagination,Card,Image} from "element-ui";
 
 Vue.use(Button);
 Vue.use(Container);
@@ -21,3 +21,6 @@ Vue.use(Avatar);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Link);
+Vue.use(Pagination);
+Vue.use(Card);
+Vue.use(Image);

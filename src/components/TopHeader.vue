@@ -54,14 +54,21 @@ import avatar from "@/assets/image/avatar-default.png";
 export default {
   name:"TopHeader",
   data() {
-    return {
-      activeIndex: this.$route.path, 
+    return { 
       search:'',
       logo,
       avatar,
       svgBell,
       svgComments,
     };
+  },
+  computed: {
+    activeIndex(){
+      //获取当前主路由
+      let path=this.$route.path;
+      let pos=this.$route.path.indexOf('/',1);
+      return path.substring(0,pos==-1?path.length:pos);
+    }
   },
   methods: {
     doSearch(){
