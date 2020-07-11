@@ -11,7 +11,7 @@ module.exports = merge(common,{
   devtool:"eval-source-map ",//开发环境source map
   devServer:{
     host:'localhost',
-    port:8081,
+    port:8090,
     open:false,
     hot:true,//模块热替换
     inline:true,//启用内联模式
